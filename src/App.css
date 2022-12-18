@@ -5,6 +5,11 @@
   text-align: center;
 }
 
+.row {
+  display: flex;
+  gap: 1.5em;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;

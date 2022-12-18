@@ -1,0 +1,37 @@
+.list {
+    padding: 2em;
+    /* margin: 1em; */
+    cursor: grab;
+}
+
+.characters__killers {
+    background: #c8372d;
+}
+
+.characters__killers:hover {
+    background: #ee4135;
+}
+
+.characters__victims {
+    background: #4a4a4a;
+}
+
+.characters__victims:hover {
+    background: #707070;
+}
+
+.characters__survivors {
+    background: #37833b;
+}
+
+.characters__survivors:hover {
+    background: #47a94c;
+}
+
+.characters__undecided {
+    background: #5e87cc;
+}
+
+.characters__undecided:hover {
+    background: #76a9ff;
+}

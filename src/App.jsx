@@ -4,18 +4,22 @@ import List from './components/List'
 
 function App() {
   const [characters, setCharacters] = useState({
-    undecided: [shuichi, kaede],
+    undecided: ['shuichi', 'kaede'],
     killers: []
   })
 
   return (
     <div className="App">
-      <div className="characters">
-        <List className="characters__killers" />
-        <List className="characters__victims" />
-        <List className="characters__survivors" />
-        <List className="characters__undecided" />
-      </div>
+      <h1>Sanity Check</h1>
+      <section className="characters">
+        <List type='undecided'/>
+        <div className="row roles">
+          <List type='killers' />
+          <List type='victims' />
+          <List type='survivors' />
+        </div>
+
+      </section>
     </div>
   )
 }
