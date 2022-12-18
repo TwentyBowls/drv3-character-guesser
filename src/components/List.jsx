@@ -1,25 +1,29 @@
 import './List.css'
 import ListHeader from './ListHeader.jsx'
-import { FaFistRaised, FaSkull } from 'react-icons/fa';
-import { GiCurvyKnife } from 'react-icons/gi';
-import { BsQuestionDiamond } from 'react-icons/bs';
 
 function List (props) {
+    let characters = props.characters.map((character, idx) => {
+        return (
+            <h2 
+                key={idx}
+                draggable='true'
+                //onDragEnd={props.updateCharacters}
+            >
+                {character}
+            </h2>
+        )
+    })
 
-
-    // function headerIcon () {
-    //     let component = null
-    //     switch(props.type) {
-    //         case 'killers':
-    //             component = <FaBeer />
-    //     }
-    //     return
-    // }
     return (
-        <section className={`list characters__${props.type}`}>
-            {/* {header.icon} */}
+        <section 
+            className={`list characters__${props.type}`}
+            onDragEnter={props.handleDragEnter}
+            onDragOver={props.handleDragOver}
+            onDragExit={props.handleDragLeave}
+            onDrop={props.handleDrop}
+        >
             <ListHeader type={props.type} />
-            <h2>Sanity</h2>
+            {characters}
         </section>
     )
 }
