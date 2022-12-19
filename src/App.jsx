@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react'
 import './App.css'
 import List from './components/List'
+import Character from './components/Character'
 
 function App() {
   let startingList = {
@@ -24,13 +25,32 @@ function App() {
   const dragEnter = (e, position) => {
     //dragOverItem.current = position
     dragOverItem.current = position
-    console.log(`drag has entered at index ${position} on:`)
+    console.log(`drag has entered the ${position} category at:`)
     console.log(e.target)
   }
 
-  const drop = (e) => {
-    console.log(`item dropped from index ${dragItem.current} to index ${dragOverItem.current}`)
-    console.log(e.target)
+  function drop (e) {
+    // e.stopPropagation()
+    // e.preventDefault()
+    console.log(`item dropped from index ${dragItem.current} to category ${dragOverItem.current}`)
+    setCharacters(prevCharacters => {
+      let categoryRemovingFrom = null
+      for (let currCategory in prevCharacters) {
+        if (prevCharacters[currCategory].includes(e.target.innerHTML)) {
+          //console.log('This element came from' + currCategory + "!")
+          categoryRemovingFrom = currCategory
+        }
+      }
+      console.log(`removing idx ${dragItem.current} from the following array:`)
+      console.log(prevCharacters[categoryRemovingFrom])
+      prevCharacters[categoryRemovingFrom].splice(dragItem.current, 1)
+      console.log(`resulting array:`)
+      console.log(prevCharacters[categoryRemovingFrom])
+      let categoryAddingTo = prevCharacters[dragOverItem.current]
+      categoryAddingTo.push(e.target.innerHTML)
+      return {...prevCharacters, [dragOverItem.current]: categoryAddingTo}
+    })
+    //////////////////////////
     // const copyListItems = [...list]
     // const dragItemContent = copyListItems[dragItem.current]
     // copyListItems.splice(dragItem.current, 1)
@@ -39,6 +59,20 @@ function App() {
     // dragOverItem.current = null
     // setList(copyListItems)
   }
+
+  const categories = ['undecided', 'killers', 'victims', 'survivors'].map((category, idx) => {
+    return (<List
+      key={`${category}_key`}
+      idx={(idx + 1) * 100}
+      characters={characters[category]} 
+      type={category} 
+      dragStart={dragStart}
+      dragEnter={dragEnter}
+      drop={drop}
+    />)
+  })
+
+
 
   // function updateCharacters() {
   //   let category = null
@@ -67,42 +101,14 @@ function App() {
 
   return (
     <div className="App">
+      <Character />
       <section className="characters">
-        <List 
-          characters={characters.undecided} 
-          type='undecided'
-          dragStart={dragStart}
-          dragEnter={dragEnter}
-          drop={drop}
-          idx={100}
-          />
+        {categories[0]}
         <div className="row roles">
-          <List 
-            characters={characters.killers} 
-            type='killers' 
-            dragStart={dragStart}
-            dragEnter={dragEnter}
-            drop={drop}
-            idx={200}
-            />
-          <List 
-            characters={characters.victims} 
-            type='victims' 
-            dragStart={dragStart}
-            dragEnter={dragEnter}
-            drop={drop}
-            idx={300}
-            />
-          <List 
-            characters={characters.survivors} 
-            type='survivors' 
-            dragStart={dragStart}
-            dragEnter={dragEnter}
-            drop={drop}
-            idx={400}
-            />
+          {categories[1]}
+          {categories[2]}
+          {categories[3]}
         </div>
-
       </section>
     </div>
   )

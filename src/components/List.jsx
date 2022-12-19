@@ -10,7 +10,6 @@ function List (props) {
                 draggable='true'
                 onDragStart={(e) => props.dragStart(e, idx)}
                 onDragEnd={props.drop}
-                // onDragEnd={console.log('drag end')}
             >
                 {character}
             </div>
@@ -23,7 +22,7 @@ function List (props) {
         >
             <ListHeader type={props.type} />
             <div className="row listContainer"
-            onDragEnter={(e) => props.dragEnter(e, props.idx)}
+            onDragEnter={(e) => props.dragEnter(e, props.type)}
             >
                 {characters}
             </div>
