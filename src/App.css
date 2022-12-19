@@ -1,11 +1,15 @@
 #root {
   max-width: 100%;
-  width: 700px;
+  margin: 0 auto;
+}
+
+.App {
+  max-width: 100%;
+  width: 1200px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
 }
-
 .row {
   display: flex;
   gap: 1.5em;
@@ -48,5 +52,7 @@
 
 .roles {
   margin-top: 1em;
+  align-items:flex-start;
+  flex-direction: column;
 }
 

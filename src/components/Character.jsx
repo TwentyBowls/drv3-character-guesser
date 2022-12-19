@@ -16,7 +16,7 @@ function Character (props) {
             style={ backgroundStyle } 
             className={`${props.name} character`}
             draggable='true'
-            onDragStart={(e) => props.dragStart(e, idx)}
+            onDragStart={(e) => props.dragStart(e, props.pos, props.type)}
             onDragEnd={props.drop}
         >
 

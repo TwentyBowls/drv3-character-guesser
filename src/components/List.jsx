@@ -7,10 +7,11 @@ function List (props) {
         return (
             <Character
                 key={idx}
-                idx={idx}
+                pos={idx}
                 name={character}
                 dragStart={props.dragStart}
                 drop={props.drop}
+                type={props.type}
             />
         )
     })
@@ -20,8 +21,9 @@ function List (props) {
             className={`list characters__${props.type}`}
         >
             <ListHeader type={props.type} />
-            <div className="row listContainer"
-            onDragEnter={(e) => props.dragEnter(e, props.type)}
+            <div 
+                className={`${props.type} row listContainer`}
+                onDragEnter={(e) => props.dragEnter(e, props.type)}
             >
                 {characters}
             </div>

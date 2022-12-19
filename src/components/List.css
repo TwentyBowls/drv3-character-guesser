@@ -1,7 +1,7 @@
 .list {
-    padding: 2em;
-    /* margin: 1em; */
+    padding: 0.5em 0 0.5em;
     cursor: grab;
+    border-radius: 0.5em;
 }
 
 .characters__killers {
@@ -40,5 +40,6 @@
     justify-content: center;
     flex-wrap: wrap;
     min-height: 60px;
-    margin-top: 1em;
+    background: #181818;
+    padding: 1em;
 }
