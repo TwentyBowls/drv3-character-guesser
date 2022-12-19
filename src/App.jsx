@@ -5,7 +5,7 @@ import Character from './components/Character'
 
 function App() {
   let startingList = {
-      undecided: ['shuichi', 'kaede', 'keebo', 'rantaro'],
+      undecided: ['kaede', 'kirumi', 'himiko', 'maki', 'tenko', 'tsumugi', 'angie', 'miu', 'shuichi', 'kaito','ryoma',  'rantaro', 'gonta', 'kokichi', 'korekiyo', 'keebo'],
       killers: [],
       victims: [],
       survivors: [],
@@ -101,7 +101,6 @@ function App() {
 
   return (
     <div className="App">
-      <Character />
       <section className="characters">
         {categories[0]}
         <div className="row roles">

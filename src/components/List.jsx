@@ -1,18 +1,17 @@
 import './List.css'
 import ListHeader from './ListHeader.jsx'
-import {useRef} from 'react'
+import Character from './Character.jsx'
 
 function List (props) {
     let characters = props.characters.map((character, idx) => {
         return (
-            <div className='character' 
+            <Character
                 key={idx}
-                draggable='true'
-                onDragStart={(e) => props.dragStart(e, idx)}
-                onDragEnd={props.drop}
-            >
-                {character}
-            </div>
+                idx={idx}
+                name={character}
+                dragStart={props.dragStart}
+                drop={props.drop}
+            />
         )
     })
 
